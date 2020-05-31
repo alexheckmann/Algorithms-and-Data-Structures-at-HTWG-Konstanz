@@ -1,10 +1,12 @@
 import java.io.*;
 
 public class WeightedQuickUnion {
+
     private int[] id;
     private int[] sz;
 
     public WeightedQuickUnion(int n) {
+
         id = new int[n];
         sz = new int[n];
         for (int i = 0; i < n; i++) {
@@ -15,15 +17,18 @@ public class WeightedQuickUnion {
     }
 
     public boolean connected(int p, int q) {
+
         return find(p) == find(q);
     }
 
     public int find(int p) {
+
         while (p != id[p]) p = id[p];
         return p;
     }
 
     public void union(int p, int q) {
+
         int pRoot = find(p);
         int qRoot = find(q);
 
@@ -40,6 +45,7 @@ public class WeightedQuickUnion {
 
 
     public static void main(String[] args) throws IOException {
+
         final int n = 512000;
         FileWriter fw = new FileWriter("Zahlen");
         BufferedWriter bw = new BufferedWriter(fw);
@@ -69,15 +75,14 @@ public class WeightedQuickUnion {
         WeightedQuickUnion quickUnion = new WeightedQuickUnion(n);
 
 
-        Stopwatch s = new Stopwatch();
         for (int j = 0; j < n; j++) {
             if (quickUnion.connected(pArray[j], qArray[j])) {
-                StdOut.println("Already connected: " + pArray[j] + " &  " + qArray[j]);
+                System.out.println("Already connected: " + pArray[j] + " &  " + qArray[j]);
             } else {
                 quickUnion.union(pArray[j], qArray[j]);
-                StdOut.println("Now connected: " + pArray[j] + " & " + qArray[j]);
+                System.out.println("Now connected: " + pArray[j] + " & " + qArray[j]);
             }
         }
-        StdOut.println(s.elapsedTime() + "s");
     }
+
 }

@@ -6,13 +6,6 @@ public class Stack<E> implements Iterable<E> {
     private int n;          // size of the stack
     private Node first;     // top of stack
 
-    // helper linked list class
-    private class Node {
-
-        private E e;
-        private Node next;
-
-    }
 
     /**
      * Initializes an empty stack.
@@ -30,6 +23,7 @@ public class Stack<E> implements Iterable<E> {
      * @return true if this stack is empty; false otherwise
      */
     public boolean isEmpty() {
+
         return first == null;
     }
 
@@ -39,6 +33,7 @@ public class Stack<E> implements Iterable<E> {
      * @return the number of items in this stack
      */
     public int size() {
+
         return n;
     }
 
@@ -114,14 +109,22 @@ public class Stack<E> implements Iterable<E> {
 
     }
 
-
     /**
      * Returns an iterator to this stack that iterates through the items in LIFO order.
      *
      * @return an iterator to this stack that iterates through the items in LIFO order
      */
     public Iterator<E> iterator() {
+
         return new ListIterator();
+    }
+
+    // helper node class for linked list
+    private class Node {
+
+        private E e;
+        private Node next;
+
     }
 
     // an iterator, doesn't implement remove() since it's optional
@@ -130,10 +133,12 @@ public class Stack<E> implements Iterable<E> {
         private Node current = first;
 
         public boolean hasNext() {
+
             return current != null;
         }
 
         public void remove() {
+
             throw new UnsupportedOperationException();
         }
 

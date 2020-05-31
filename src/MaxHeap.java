@@ -1,4 +1,4 @@
-public class MaxHeap<T extends Comparable<T>> {
+public class MaxHeap<T extends Comparable<? super T>> {
 
     private T[] a;
     private int N;
@@ -69,7 +69,7 @@ public class MaxHeap<T extends Comparable<T>> {
         System.out.println("The Max Heap is ");
         maxHeap.print();
         while (!maxHeap.isEmpty()) {
-            StdOut.print((char) maxHeap.deleteMax() + " ");
+            System.out.print((char) maxHeap.deleteMax() + " ");
         }
 
     }

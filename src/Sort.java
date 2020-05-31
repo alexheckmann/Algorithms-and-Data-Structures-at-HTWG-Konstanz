@@ -1,8 +1,7 @@
-import org.jetbrains.annotations.NotNull;
-
 public class Sort {
 
-    public static <T extends Comparable<T>> void mergeSort(T[] m) {
+    public static <T extends Comparable<? super T>> void mergeSort(T[] m) {
+
         if (m == null || m.length == 0) {
             throw new IllegalArgumentException();
         } else {
@@ -15,7 +14,7 @@ public class Sort {
         }
     }
 
-    private static <T extends Comparable<T>> void mergeSort(T[] m, T[] auxiliaryArray, int from, int to) {
+    private static <T extends Comparable<? super T>> void mergeSort(T[] m, T[] auxiliaryArray, int from, int to) {
 
         if (to <= from) {
             return;
@@ -30,7 +29,8 @@ public class Sort {
         merge(m, auxiliaryArray, from, middle, to);
     }
 
-    private static <T extends Comparable<T>> void merge(T[] m, T[] auxiliaryArray, int from, int middle, int to) {
+    private static <T extends Comparable<? super T>> void merge(T[] m, T[] auxiliaryArray, int from, int middle, int to) {
+
         for (int k = from; k <= to; k++) {
             auxiliaryArray[k] = m[k];
         }
@@ -60,7 +60,8 @@ public class Sort {
 
     }
 
-    public static <T extends Comparable<T>> void insertionSort(T[] m) {
+    public static <T extends Comparable<? super T>> void insertionSort(T[] m) {
+
         if (m == null || m.length == 0) {
             throw new IllegalArgumentException();
         } else {
@@ -79,7 +80,8 @@ public class Sort {
         }
     }
 
-    public static <T extends Comparable<T>> void quickSort(T[] m) {
+    public static <T extends Comparable<? super T>> void quickSort(T[] m) {
+
         if (m == null || m.length == 0) {
             throw new IllegalArgumentException();
         } else {
@@ -91,7 +93,8 @@ public class Sort {
         }
     }
 
-    private static <T extends Comparable<T>> void quickSort(T[] m, int from, int to) {
+    private static <T extends Comparable<? super T>> void quickSort(T[] m, int from, int to) {
+
         if (to <= from) {
             return;
         }
@@ -101,7 +104,8 @@ public class Sort {
         quickSort(m, j + 1, to);
     }
 
-    private static <T extends Comparable<T>> int divide(@NotNull T[] m, int from, int to) {
+    private static <T extends Comparable<? super T>> int divide(T[] m, int from, int to) {
+
         int i = from;
         int j = to + 1;
 
@@ -128,7 +132,8 @@ public class Sort {
         return j;
     }
 
-    private static <T> void swap(@NotNull T[] m, int i, int j) {
+    private static <T> void swap(T[] m, int i, int j) {
+
         T t = m[i];
         m[i] = m[j];
         m[j] = t;
